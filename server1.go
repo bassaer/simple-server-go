@@ -5,11 +5,11 @@ import (
 	"net/http"
 )
 
-func handler(w http.ResponseHandler, r *http.Request) {
-	fmt.Fprintf(w, "hello world")
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, World")
 }
 
 func main() {
-	http.HandlerFunc("/", handler)
+	http.HandleFunc("/", handler) // ハンドラを登録してウェブページを表示させる
 	http.ListenAndServe(":8080", nil)
 }
